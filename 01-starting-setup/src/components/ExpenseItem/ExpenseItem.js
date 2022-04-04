@@ -1,5 +1,13 @@
 function ExpenseItem() {
-  return <h2>Expense Item!</h2>;
+  return (
+    <div>
+      <div>April 4, 2022</div>
+      <div>
+        <h2>Udemy course</h2>
+        <div>$20.00</div>
+      </div>
+    </div>
+  );
 }
 
 export default ExpenseItem;
