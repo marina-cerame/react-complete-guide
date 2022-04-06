@@ -26,6 +26,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
+      id: Math.random(),
     };
     // Pass up to NewExpense component
     onSaveExpense(expenseData);

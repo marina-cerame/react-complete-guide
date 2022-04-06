@@ -21,7 +21,12 @@ const Expenses = ({ items }) => {
       />
 
       {items.map((e) => (
-        <ExpenseItem title={e.title} amount={e.amount} date={e.date} />
+        <ExpenseItem
+          title={e.title}
+          amount={e.amount}
+          date={e.date}
+          key={e.id}
+        />
       ))}
     </Card>
   );
