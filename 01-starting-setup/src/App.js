@@ -7,13 +7,13 @@ const EXAMPLE_EXPENSES = [
   {
     title: 'Udemy course',
     amount: '20.00',
-    date: new Date(2022, 3, 4),
+    date: new Date(2021, 3, 4),
     id: 1,
   },
   {
     title: 'Dice',
     amount: '12.59',
-    date: new Date(2022, 2, 12),
+    date: new Date(2020, 2, 12),
     id: 2,
   },
   {
