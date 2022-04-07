@@ -24,7 +24,7 @@ const ExpenseForm = ({ onSaveExpense, onCancel }) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
       id: Math.random(),
     };
