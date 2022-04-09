@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../UI/Button';
 import Card from '../UI/Card';
 
 import styles from './AddUser.module.css';
@@ -26,7 +27,7 @@ const AddUser = () => {
         <input id="username" type="text" onChange={usernameChangeHandler} />
         <label htmlFor="age">Age (years)</label>
         <input id="age" type="number" onChange={ageChangeHandler} />
-        <button type="submit">Add User</button>
+        <Button type="submit">Add User</Button>
       </form>
     </Card>
   );
