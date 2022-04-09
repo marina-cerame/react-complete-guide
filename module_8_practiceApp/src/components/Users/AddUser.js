@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Card from '../UI/Card';
 
 import styles from './AddUser.module.css';
 
@@ -19,13 +20,15 @@ const AddUser = () => {
     console.log(username, age);
   };
   return (
-    <form onSubmit={submitUserHandler}>
-      <label htmlFor="username">Username</label>
-      <input id="username" type="text" onChange={usernameChangeHandler} />
-      <label htmlFor="age">Age (years)</label>
-      <input id="age" type="number" onChange={ageChangeHandler} />
-      <button type="submit">Add User</button>
-    </form>
+    <Card className={styles.input}>
+      <form onSubmit={submitUserHandler}>
+        <label htmlFor="username">Username</label>
+        <input id="username" type="text" onChange={usernameChangeHandler} />
+        <label htmlFor="age">Age (years)</label>
+        <input id="age" type="number" onChange={ageChangeHandler} />
+        <button type="submit">Add User</button>
+      </form>
+    </Card>
   );
 };
 
