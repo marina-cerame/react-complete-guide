@@ -24,3 +24,8 @@
   outline: none;
   border-color: #4f005f;
 }
+
+.invalid p {
+  font-weight: bold;
+  color: red;
+}
