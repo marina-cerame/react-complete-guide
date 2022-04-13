@@ -4,7 +4,7 @@ import Card from '../UI/Card';
 
 import styles from './AddUser.module.css';
 
-const AddUser = () => {
+const AddUser = ({ onUserSubmit }) => {
   const [username, setUsername] = useState('');
   const [age, setAge] = useState('');
   const [isValid, setIsValid] = useState(true);
@@ -37,7 +37,11 @@ const AddUser = () => {
       return;
     }
 
-    console.log(username, age);
+    onUserSubmit({
+      id: Math.random(),
+      username,
+      age,
+    });
 
     // Reset form
     setUsername('');
