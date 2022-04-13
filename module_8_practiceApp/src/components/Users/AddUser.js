@@ -1,27 +1,21 @@
 import { useState } from 'react';
 import Button from '../UI/Button';
 import Card from '../UI/Card';
+import Modal from '../UI/Modal';
 
 import styles from './AddUser.module.css';
 
 const AddUser = ({ onUserSubmit }) => {
   const [username, setUsername] = useState('');
   const [age, setAge] = useState('');
-  const [isValid, setIsValid] = useState(true);
+
+  const [error, setError] = useState(null);
 
   const usernameChangeHandler = (e) => {
-    // Reset isValid when user changes input
-    if (!isValid) {
-      setIsValid(true);
-    }
     setUsername(e.target.value);
   };
 
   const ageChangeHandler = (e) => {
-    // Reset isValid when user changes input
-    if (!isValid) {
-      setIsValid(true);
-    }
     setAge(e.target.value);
   };
 
@@ -29,11 +23,17 @@ const AddUser = ({ onUserSubmit }) => {
     e.preventDefault();
     // Validate values
     if (username.trim().length === 0 || age.trim().length === 0) {
-      setIsValid(false);
+      setError({
+        title: 'Empty input',
+        message: 'Username and age fields require a non-empty value',
+      });
       return;
     }
     if (age < 1) {
-      setIsValid(false);
+      setError({
+        title: 'Invalid age',
+        message: 'Age must be greater than 0.',
+      });
       return;
     }
 
@@ -48,30 +48,39 @@ const AddUser = ({ onUserSubmit }) => {
     setAge('');
   };
 
-  let validationMessage = '';
-
-  if (!isValid) {
-    validationMessage = (
-      <p className={styles.invalid}>Please check your input.</p>
-    );
-  }
+  const closeModal = () => {
+    setError(null);
+  };
 
   return (
-    <Card className={`${styles.input} ${!isValid && styles.invalid}`}>
-      {validationMessage}
-      <form onSubmit={submitUserHandler}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={username}
-          onChange={usernameChangeHandler}
+    <div>
+      {error && (
+        <Modal
+          title={error.title}
+          content={error.message}
+          onConfirm={closeModal}
         />
-        <label htmlFor="age">Age (years)</label>
-        <input id="age" type="number" value={age} onChange={ageChangeHandler} />
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+      )}
+      <Card className={`${styles.input}`}>
+        <form onSubmit={submitUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={usernameChangeHandler}
+          />
+          <label htmlFor="age">Age (years)</label>
+          <input
+            id="age"
+            type="number"
+            value={age}
+            onChange={ageChangeHandler}
+          />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </div>
   );
 };
 
